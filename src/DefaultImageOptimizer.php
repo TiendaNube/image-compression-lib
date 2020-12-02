@@ -10,7 +10,7 @@ class DefaultImageOptimizer implements ImageOptimizerInterface
 {
     public function optimizeImage(string $pathToImage, $pathToOutput = null)
     {
-        if (null === $pathToOutput) {
+        if (empty($pathToOutput)) {
             $pathToOutput = $pathToImage;
         }
 

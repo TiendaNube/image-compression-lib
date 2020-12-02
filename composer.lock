@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "09e772ac8b330e75d2e9121584f61805",
+    "content-hash": "e9e335c78d01be9d1984e27e57beb06b",
     "packages": [
         {
             "name": "psr/log",
@@ -638,32 +638,32 @@
             "time": "2020-02-08T14:40:25+00:00"
         },
         {
-            "name": "php-mock/php-mock-mockery",
+            "name": "php-mock/php-mock-phpunit",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/php-mock/php-mock-mockery.git",
-                "reference": "3138917b8be0eb342568f47c76fc1eeac53052be"
+                "url": "https://github.com/php-mock/php-mock-phpunit.git",
+                "reference": "afc76d106e00e6c8fa038079fc52b060fcf8b529"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-mock/php-mock-mockery/zipball/3138917b8be0eb342568f47c76fc1eeac53052be",
-                "reference": "3138917b8be0eb342568f47c76fc1eeac53052be",
+                "url": "https://api.github.com/repos/php-mock/php-mock-phpunit/zipball/afc76d106e00e6c8fa038079fc52b060fcf8b529",
+                "reference": "afc76d106e00e6c8fa038079fc52b060fcf8b529",
                 "shasum": ""
             },
             "require": {
-                "mockery/mockery": "^1",
-                "php": ">=5.6",
-                "php-mock/php-mock-integration": "^2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4|^5"
+                "php": ">=7",
+                "php-mock/php-mock-integration": "^2.1",
+                "phpunit/phpunit": "^6 || ^7 || ^8 || ^9"
             },
             "default-branch": true,
             "type": "library",
             "autoload": {
+                "files": [
+                    "autoload.php"
+                ],
                 "psr-4": {
-                    "phpmock\\mockery\\": "classes/"
+                    "phpmock\\phpunit\\": "classes/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -678,21 +678,21 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Mock built-in PHP functions (e.g. time()) with Mockery. This package relies on PHP's namespace fallback policy. No further extension is needed.",
-            "homepage": "https://github.com/php-mock/php-mock-mockery",
+            "description": "Mock built-in PHP functions (e.g. time()) with PHPUnit. This package relies on PHP's namespace fallback policy. No further extension is needed.",
+            "homepage": "https://github.com/php-mock/php-mock-phpunit",
             "keywords": [
                 "BDD",
                 "TDD",
                 "function",
                 "mock",
-                "mockery",
+                "phpunit",
                 "stub",
                 "test",
                 "test double"
             ],
             "support": {
-                "issues": "https://github.com/php-mock/php-mock-mockery/issues",
-                "source": "https://github.com/php-mock/php-mock-mockery/tree/master"
+                "issues": "https://github.com/php-mock/php-mock-phpunit/issues",
+                "source": "https://github.com/php-mock/php-mock-phpunit/tree/master"
             },
             "funding": [
                 {
@@ -700,7 +700,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-02-08T17:55:11+00:00"
+            "time": "2020-10-14T18:31:43+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -2169,7 +2169,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "mockery/mockery": 20,
-        "php-mock/php-mock-mockery": 20
+        "php-mock/php-mock-phpunit": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
