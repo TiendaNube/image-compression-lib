@@ -21,6 +21,7 @@ class DefaultImageOptimizerTest extends TestCase
     /**
      * @runInSeparateProcess
      * @preserveGlobalState disabled
+     * @doesNotPerformAssertions
      * @dataProvider optimizeImageProvider
      */
     public function testOptimizeImage($pathToImage, $pathToOutput, $expectedPathToOutput)
