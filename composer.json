@@ -5,7 +5,8 @@
     "minimum-stability": "dev",
     "require": {
         "php": "7.0.*",
-        "phpunit/phpunit": "^6.5"
+        "phpunit/phpunit": "^6.5",
+        "spatie/image-optimizer": "^1.1"
     },
     "autoload": {
         "psr-4": {
