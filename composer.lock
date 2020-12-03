@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9e335c78d01be9d1984e27e57beb06b",
+    "content-hash": "9d19d7e90a213f2e94697cd9b5c5b1c3",
     "packages": [
         {
             "name": "psr/log",
@@ -639,16 +639,16 @@
         },
         {
             "name": "php-mock/php-mock-phpunit",
-            "version": "dev-master",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-mock/php-mock-phpunit.git",
-                "reference": "afc76d106e00e6c8fa038079fc52b060fcf8b529"
+                "reference": "2877a0e58f12e91b64bf36ccd080a209dcbf6c30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-mock/php-mock-phpunit/zipball/afc76d106e00e6c8fa038079fc52b060fcf8b529",
-                "reference": "afc76d106e00e6c8fa038079fc52b060fcf8b529",
+                "url": "https://api.github.com/repos/php-mock/php-mock-phpunit/zipball/2877a0e58f12e91b64bf36ccd080a209dcbf6c30",
+                "reference": "2877a0e58f12e91b64bf36ccd080a209dcbf6c30",
                 "shasum": ""
             },
             "require": {
@@ -656,7 +656,6 @@
                 "php-mock/php-mock-integration": "^2.1",
                 "phpunit/phpunit": "^6 || ^7 || ^8 || ^9"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "files": [
@@ -692,15 +691,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-mock/php-mock-phpunit/issues",
-                "source": "https://github.com/php-mock/php-mock-phpunit/tree/master"
+                "source": "https://github.com/php-mock/php-mock-phpunit/tree/2.6.0"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/michalbundyra",
-                    "type": "github"
-                }
-            ],
-            "time": "2020-10-14T18:31:43+00:00"
+            "time": "2020-02-08T15:44:47+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -2167,10 +2160,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "mockery/mockery": 20,
-        "php-mock/php-mock-phpunit": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
