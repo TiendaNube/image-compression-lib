@@ -1,0 +1,13 @@
+#!/bin/sh
+
+docker-compose -f docker-compose.cli.yml run --rm php-cs-fixer fix --quiet --dry-run --stop-on-violation
+
+if [ $? -eq 0 ]
+then
+  exit 0
+else
+  clear;
+  echo "You need to check your code-style before committing"
+  echo "run: docker-compose -f docker-compose.cli.yml run --rm php-cs-fixer fix --verbose --show-progress=estimating"
+  exit 1
+fi
