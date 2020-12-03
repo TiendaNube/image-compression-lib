@@ -6,5 +6,5 @@ namespace ImageCompression;
 
 interface ImageOptimizerInterface
 {
-    public function optimizeImage(string $pathToImage, $pathToOutput = null);
+    public function optimizeImage(string $pathToImage, string $pathToOutput = null);
 }
