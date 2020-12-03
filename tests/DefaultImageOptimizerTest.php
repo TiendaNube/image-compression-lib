@@ -13,24 +13,17 @@ class DefaultImageOptimizerTest extends TestCase
 {
     use PHPMock;
 
-    private $defaultImageOptimizer;
-
-    public function setUp()
-    {
-        $this->defaultImageOptimizer = new DefaultImageOptimizer();
-    }
-
     /**
      * @dataProvider inputAndOutputImageProvider
      */
-    public function testOptimizeImageWithInputAndOutput($pathToImage, $pathToOutput, $expectedPathToOutput)
+    public function testOptimizeImageWithValidData($pathToImage, $pathToOutput, $expectedPathToOutput)
     {
         $optimizerChainMock = Mockery::mock(OptimizerChain::class);
         $optimizerChainMock->shouldReceive('optimize')
             ->once()
             ->with(
                 $pathToImage,
-                $pathToOutput
+                $expectedPathToOutput
             );
 
         $optimizerChainFactoryMock = Mockery::mock('alias:Spatie\ImageOptimizer\OptimizerChainFactory');
@@ -47,14 +40,16 @@ class DefaultImageOptimizerTest extends TestCase
             ->with($command)
             ->willReturn('ok');
 
-        $this->defaultImageOptimizer->optimizeImage($pathToImage, $pathToOutput);
+        $defaultImageOptimizer = new DefaultImageOptimizer();
+        $defaultImageOptimizer->optimizeImage($pathToImage, $pathToOutput);
+        Mockery::close();
     }
 
     public function inputAndOutputImageProvider() : array
     {
         return [
+            ['original/img.jpg', null, 'original/img.jpg'],
             ['original/img.jpg', 'optimized.jpg', 'optimized.jpg'],
-            //     ['original/img.jpg', null, 'optimized.jpg'],
         ];
     }
 }
