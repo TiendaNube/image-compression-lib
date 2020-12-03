@@ -1,5 +1,5 @@
 {
-    "name": "tiendadanube/image-compression-lib",
+    "name": "tiendanube/image-compression-lib",
     "description": "An abstraction layer for image compression libraries",
     "type": "library",
     "minimum-stability": "dev",
