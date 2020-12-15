@@ -32,7 +32,7 @@ class DefaultImageOptimizerTest extends TestCase
             ->once()
             ->andReturn($optimizerChainMock);
 
-        $command = sprintf('%s -sampling-factor 4:2:0 -strip -quality 65 %s', $pathToImage, $expectedPathToOutput);
+        $command = sprintf('convert %s -sampling-factor 4:2:0 -strip -quality 65 %s', $expectedPathToOutput, $expectedPathToOutput);
 
         $exec = $this->getFunctionMock(__NAMESPACE__, 'shell_exec');
         $exec
