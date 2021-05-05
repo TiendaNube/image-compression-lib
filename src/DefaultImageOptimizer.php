@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace ImageCompression;
 
-use Spatie\ImageOptimizer\OptimizerChainFactory;
+use ImageCompression\Optimizers\OptimizerListService;
+use Spatie\ImageOptimizer\OptimizerChain;
 
 class DefaultImageOptimizer implements ImageOptimizerInterface
 {
@@ -14,7 +15,10 @@ class DefaultImageOptimizer implements ImageOptimizerInterface
             $pathToOutput = $pathToImage;
         }
 
-        $optimizerChain = OptimizerChainFactory::create();
+        $optimizerChain = new OptimizerChain();
+
+        OptimizerListService::setOptimizers($optimizerChain);
+
         $optimizerChain->optimize($pathToImage, $pathToOutput);
         $this->convert($pathToOutput, $pathToOutput);
     }
@@ -24,5 +28,9 @@ class DefaultImageOptimizer implements ImageOptimizerInterface
         $command = sprintf('convert %s -sampling-factor 4:2:0 -strip -quality 65 %s', $pathToImage, $pathToOutput);
 
         return shell_exec($command);
+    }
+
+    private function getOptimizerChain()
+    {
     }
 }

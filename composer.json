@@ -4,7 +4,7 @@
     "type": "library",
     "minimum-stability": "dev",
     "require": {
-        "php": "7.0.*",
+        "php": "^7.0",
         "spatie/image-optimizer": "^1.1"
     },
     "require-dev": {
@@ -21,5 +21,10 @@
         "psr-4": {
             "ImageCompression\\": "tests/"
         }
+    },
+    "scripts": {
+        "style:check": "docker-compose -f docker-compose.cli.yml run --rm php-cs-fixer fix --verbose --show-progress=estimating --dry-run",
+        "style:fix": "docker-compose -f docker-compose.cli.yml run --rm php-cs-fixer fix --verbose --show-progress=estimating",
+        "test": "RUNNING_PHPUNIT=true php vendor/bin/phpunit"
     }
 }
