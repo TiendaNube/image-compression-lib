@@ -4,26 +4,37 @@ declare(strict_types=1);
 
 namespace ImageCompression\Optimizers;
 
-use Spatie\ImageOptimizer\Optimizers\BaseOptimizer;
-use Spatie\ImageOptimizer\Optimizers\Jpegoptim;
+use ImageCompression\Optimizers\Factories\Jpegoptim;
+use Spatie\ImageOptimizer\OptimizerChain;
 
 class JpgOptimizer implements OptimizerHandlerInterface
 {
     public static $quality = 95;
 
-    public static function getOptimizer() : BaseOptimizer
+    const JPEGOPTIM_PROGRESSIVE = '--all-progressive';
+    const JPEGOPTIM_STRIP = '--strip-all';
+    const JPEGOPTIM_QUALITY = '--max=%s';
+
+    public static function setOptimizer(OptimizerChain &$optimizerChain)
     {
         $options = static::getConfig();
 
-        return new Jpegoptim($options);
+        $jpegOptim = Jpegoptim::create($options);
+
+        $optimizerChain->addOptimizer($jpegOptim);
     }
 
-    private static function getConfig()
+    private static function getConfig() : array
     {
         return [
-            'quality' => static::$quality,
-            '--strip-all',
-            '--all-progressive',
+            self::getBinaryQuality(self::$quality),
+            self::JPEGOPTIM_STRIP,
+            self::JPEGOPTIM_PROGRESSIVE,
         ];
+    }
+
+    private static function getBinaryQuality(int $quality)
+    {
+        return sprintf(self::JPEGOPTIM_QUALITY, $quality);
     }
 }

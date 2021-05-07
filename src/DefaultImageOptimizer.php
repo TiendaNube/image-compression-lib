@@ -15,9 +15,7 @@ class DefaultImageOptimizer implements ImageOptimizerInterface
             $pathToOutput = $pathToImage;
         }
 
-        $optimizerChain = new OptimizerChain();
-
-        OptimizerListService::setOptimizers($optimizerChain);
+        $optimizerChain = OptimizerListService::getOptimizerChain();
 
         $optimizerChain->optimize($pathToImage, $pathToOutput);
         $this->convert($pathToOutput, $pathToOutput);
@@ -30,7 +28,4 @@ class DefaultImageOptimizer implements ImageOptimizerInterface
         return shell_exec($command);
     }
 
-    private function getOptimizerChain()
-    {
-    }
 }

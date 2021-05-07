@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ImageCompression;
 
+use ImageCompression\Optimizers\OptimizerListService;
 use Mockery;
 use phpmock\phpunit\PHPMock;
 use PHPUnit\Framework\TestCase;
@@ -26,9 +27,9 @@ class DefaultImageOptimizerTest extends TestCase
                 $expectedPathToOutput
             );
 
-        $optimizerChainFactoryMock = Mockery::mock('alias:Spatie\ImageOptimizer\OptimizerChainFactory');
-        $optimizerChainFactoryMock
-            ->shouldReceive('create')
+        $optimizerListMock = Mockery::mock('alias:'.OptimizerListService::class);
+        $optimizerListMock
+            ->shouldReceive('getOptimizerChain')
             ->once()
             ->andReturn($optimizerChainMock);
 

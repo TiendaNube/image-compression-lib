@@ -19,7 +19,16 @@ class OptimizerListService
     public static function setOptimizers(OptimizerChain &$optimizerChain)
     {
         foreach (self::$optimizers as $optimizer) {
-            $optimizerChain->addOptimizer($optimizer::getOptimizer());
+            $optimizer::setOptimizer($optimizerChain);
         }
+    }
+
+    public static function getOptimizerChain(){
+
+        $optimizerChain = new OptimizerChain();
+
+        self::setOptimizers($optimizerChain);
+
+        return $optimizerChain;
     }
 }

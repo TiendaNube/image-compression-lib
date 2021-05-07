@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace ImageCompression\Optimizers;
 
-use Spatie\ImageOptimizer\Optimizers\BaseOptimizer;
+use Spatie\ImageOptimizer\OptimizerChain;
 
 interface OptimizerHandlerInterface
 {
-    public static function getOptimizer() : BaseOptimizer;
+    public static function setOptimizer(OptimizerChain &$optimizerChain);
 }
