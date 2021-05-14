@@ -11,23 +11,23 @@ class OptimizerListService
     /**
      * @var OptimizerHandlerInterface[]
      */
-    private static $optimizers = [
+    private $optimizers = [
         JpgOptimizer::class,
         PngOptimizer::class,
     ];
 
-    public static function setOptimizers(OptimizerChain &$optimizerChain)
+    private function addOptimizersTo(OptimizerChain &$optimizerChain)
     {
-        foreach (self::$optimizers as $optimizer) {
-            $optimizer::setOptimizer($optimizerChain);
+        foreach ($this->optimizers as $optimizer) {
+            $optimizer::addOptimizerTo($optimizerChain);
         }
     }
 
-    public static function getOptimizerChain(){
-
+    public function getOptimizerChain()
+    {
         $optimizerChain = new OptimizerChain();
 
-        self::setOptimizers($optimizerChain);
+        $this->addOptimizersTo($optimizerChain);
 
         return $optimizerChain;
     }

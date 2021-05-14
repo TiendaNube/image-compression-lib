@@ -14,6 +14,7 @@ use Spatie\ImageOptimizer\OptimizerChain;
 class PngOptimizerTest extends TestCase
 {
     use PHPMock;
+
     /**
      * @runInSeparateProcess
      */
@@ -43,7 +44,7 @@ class PngOptimizerTest extends TestCase
             ->with($optiPng)
             ->once();
 
-        PngOptimizer::setOptimizer($optimizerChainMock);
+        PngOptimizer::addOptimizerTo($optimizerChainMock);
 
         $this->assertTrue(true);
         Mockery::close();

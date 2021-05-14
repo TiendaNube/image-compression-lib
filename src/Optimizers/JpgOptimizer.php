@@ -15,9 +15,9 @@ class JpgOptimizer implements OptimizerHandlerInterface
     const JPEGOPTIM_STRIP = '--strip-all';
     const JPEGOPTIM_QUALITY = '--max=%s';
 
-    public static function setOptimizer(OptimizerChain &$optimizerChain)
+    public static function addOptimizerTo(OptimizerChain &$optimizerChain)
     {
-        $options = static::getConfig();
+        $options = self::getConfig();
 
         $jpegOptim = Jpegoptim::create($options);
 

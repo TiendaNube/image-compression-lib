@@ -24,7 +24,6 @@
     },
     "scripts": {
         "style:check": "docker-compose -f docker-compose.cli.yml run --rm php-cs-fixer fix --verbose --show-progress=estimating --dry-run",
-        "style:fix": "docker-compose -f docker-compose.cli.yml run --rm php-cs-fixer fix --verbose --show-progress=estimating",
-        "test": "RUNNING_PHPUNIT=true php vendor/bin/phpunit"
+        "style:fix": "docker-compose -f docker-compose.cli.yml run --rm php-cs-fixer fix --verbose --show-progress=estimating"
     }
 }

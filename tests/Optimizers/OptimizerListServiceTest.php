@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace ImageCompression\Optimizers;
 
-use ImageCompression\Optimizers\Factories\Jpegoptim;
-use ImageCompression\Optimizers\Factories\Optipng;
-use ImageCompression\Optimizers\Factories\Pngquant;
 use Mockery;
 use phpmock\phpunit\PHPMock;
 use PHPUnit\Framework\TestCase;
@@ -21,14 +18,15 @@ class OptimizerListServiceTest extends TestCase
      */
     public function testGetOptimizer()
     {
-
         $pngOptimizer = Mockery::mock('alias:'.PngOptimizer::class);
-        $pngOptimizer->shouldReceive('setOptimizer')->once();
+        $pngOptimizer->shouldReceive('addOptimizerTo')->once();
 
         $jpgOptimizer = Mockery::mock('alias:'.JpgOptimizer::class);
-        $jpgOptimizer->shouldReceive('setOptimizer')->once();
+        $jpgOptimizer->shouldReceive('addOptimizerTo')->once();
 
-        $this->assertInstanceOf(OptimizerChain::class, OptimizerListService::getOptimizerChain());
+        $optimizerListService = new OptimizerListService();
+
+        $this->assertInstanceOf(OptimizerChain::class, $optimizerListService->getOptimizerChain());
         Mockery::close();
     }
 }

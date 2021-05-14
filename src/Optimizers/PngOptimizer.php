@@ -10,7 +10,7 @@ use Spatie\ImageOptimizer\OptimizerChain;
 
 class PngOptimizer implements OptimizerHandlerInterface
 {
-    public static function setOptimizer(OptimizerChain &$optimizerChain)
+    public static function addOptimizerTo(OptimizerChain &$optimizerChain)
     {
         $optimizerChain->addOptimizer(Optipng::create());
 

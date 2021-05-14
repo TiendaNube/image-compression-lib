@@ -43,7 +43,7 @@ class JpgOptimizerTest extends TestCase
             ->with($jpegOptim)
             ->once();
 
-        JpgOptimizer::setOptimizer($optimizerChainMock);
+        JpgOptimizer::addOptimizerTo($optimizerChainMock);
 
         $this->assertTrue(true);
         Mockery::close();

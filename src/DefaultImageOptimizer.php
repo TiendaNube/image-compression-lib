@@ -9,15 +9,26 @@ use Spatie\ImageOptimizer\OptimizerChain;
 
 class DefaultImageOptimizer implements ImageOptimizerInterface
 {
+    private $optimizerChain;
+
+    public function __construct(OptimizerChain $optimizerChain = null)
+    {
+        $this->optimizerChain = $optimizerChain;
+
+        if ($optimizerChain === null) {
+            $optimizerListService = new OptimizerListService();
+            $this->optimizerChain = $optimizerListService->getOptimizerChain();
+        }
+    }
+
     public function optimizeImage(string $pathToImage, string $pathToOutput = null)
     {
         if (empty($pathToOutput)) {
             $pathToOutput = $pathToImage;
         }
 
-        $optimizerChain = OptimizerListService::getOptimizerChain();
+        $this->optimizerChain->optimize($pathToImage, $pathToOutput);
 
-        $optimizerChain->optimize($pathToImage, $pathToOutput);
         $this->convert($pathToOutput, $pathToOutput);
     }
 
@@ -27,5 +38,4 @@ class DefaultImageOptimizer implements ImageOptimizerInterface
 
         return shell_exec($command);
     }
-
 }
