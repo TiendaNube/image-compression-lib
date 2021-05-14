@@ -6,19 +6,16 @@ namespace ImageCompression\Optimizers;
 
 use ImageCompression\Optimizers\Factories\Jpegoptim;
 use Mockery;
-use phpmock\phpunit\PHPMock;
 use PHPUnit\Framework\TestCase;
 use Spatie\ImageOptimizer\OptimizerChain;
 
 class JpgOptimizerTest extends TestCase
 {
-    use PHPMock;
-
     /**
      * @dataProvider providerQuality
      * @runInSeparateProcess
      */
-    public function testSetOptimizer($quality)
+    public function testAddOptimizer($quality)
     {
         if ($quality !== null) {
             JpgOptimizer::$quality = $quality;

@@ -7,18 +7,15 @@ namespace ImageCompression\Optimizers;
 use ImageCompression\Optimizers\Factories\Optipng;
 use ImageCompression\Optimizers\Factories\Pngquant;
 use Mockery;
-use phpmock\phpunit\PHPMock;
 use PHPUnit\Framework\TestCase;
 use Spatie\ImageOptimizer\OptimizerChain;
 
 class PngOptimizerTest extends TestCase
 {
-    use PHPMock;
-
     /**
      * @runInSeparateProcess
      */
-    public function testSetOptimizer()
+    public function testAddOptimizer()
     {
         $pngQuant = new \Spatie\ImageOptimizer\Optimizers\Pngquant();
 
