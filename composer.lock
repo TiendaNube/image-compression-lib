@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d19d7e90a213f2e94697cd9b5c5b1c3",
+    "content-hash": "d0851d1153508475c7240f7da211a4d6",
     "packages": [
         {
             "name": "psr/log",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "dd738d0b4491f32725492cf345f6b501f5922fec"
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/dd738d0b4491f32725492cf345f6b501f5922fec",
-                "reference": "dd738d0b4491f32725492cf345f6b501f5922fec",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/d49695b909c3b7628b6289db5479a1c204601f11",
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11",
                 "shasum": ""
             },
             "require": {
@@ -53,9 +53,9 @@
                 "psr-3"
             ],
             "support": {
-                "source": "https://github.com/php-fig/log/tree/master"
+                "source": "https://github.com/php-fig/log/tree/1.1.4"
             },
-            "time": "2020-09-18T06:44:51+00:00"
+            "time": "2021-05-03T11:20:27+00:00"
         },
         {
             "name": "spatie/image-optimizer",
@@ -290,12 +290,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "60fa2f67f6e4d3634bb4a45ff3171fa52215800d"
+                "reference": "31467aeb3ca3188158613322d66df81cedd86626"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/60fa2f67f6e4d3634bb4a45ff3171fa52215800d",
-                "reference": "60fa2f67f6e4d3634bb4a45ff3171fa52215800d",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/31467aeb3ca3188158613322d66df81cedd86626",
+                "reference": "31467aeb3ca3188158613322d66df81cedd86626",
                 "shasum": ""
             },
             "require": {
@@ -351,7 +351,7 @@
                 "issues": "https://github.com/mockery/mockery/issues",
                 "source": "https://github.com/mockery/mockery/tree/1.3"
             },
-            "time": "2020-08-11T18:10:21+00:00"
+            "time": "2021-02-24T09:51:00+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -514,27 +514,28 @@
         },
         {
             "name": "php-mock/php-mock",
-            "version": "2.2.2",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-mock/php-mock.git",
-                "reference": "890d3e32e3a5f29715a8fd17debd87a0c9e614a0"
+                "reference": "a3142f257153b71c09bf9146ecf73430b3818b7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-mock/php-mock/zipball/890d3e32e3a5f29715a8fd17debd87a0c9e614a0",
-                "reference": "890d3e32e3a5f29715a8fd17debd87a0c9e614a0",
+                "url": "https://api.github.com/repos/php-mock/php-mock/zipball/a3142f257153b71c09bf9146ecf73430b3818b7c",
+                "reference": "a3142f257153b71c09bf9146ecf73430b3818b7c",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.6 || ^7.0",
+                "php": "^5.6 || ^7.0 || ^8.0",
                 "phpunit/php-text-template": "^1 || ^2"
             },
             "replace": {
                 "malkusch/php-mock": "*"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.0 || ^9.0"
+                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.0 || ^9.0",
+                "squizlabs/php_codesniffer": "^3.5"
             },
             "suggest": {
                 "php-mock/php-mock-phpunit": "Allows integration into PHPUnit testcase with the trait PHPMock."
@@ -576,9 +577,15 @@
             ],
             "support": {
                 "issues": "https://github.com/php-mock/php-mock/issues",
-                "source": "https://github.com/php-mock/php-mock/tree/2.2.2"
+                "source": "https://github.com/php-mock/php-mock/tree/2.3.0"
             },
-            "time": "2020-04-17T16:39:00+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/michalbundyra",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-12-11T19:20:04+00:00"
         },
         {
             "name": "php-mock/php-mock-integration",
@@ -2109,12 +2116,12 @@
             "version": "1.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "shasum": ""
             },
@@ -2152,8 +2159,8 @@
                 "validate"
             ],
             "support": {
-                "issues": "https://github.com/webmozart/assert/issues",
-                "source": "https://github.com/webmozart/assert/tree/master"
+                "issues": "https://github.com/webmozarts/assert/issues",
+                "source": "https://github.com/webmozarts/assert/tree/1.9.1"
             },
             "time": "2020-07-08T17:02:28+00:00"
         }
@@ -2164,7 +2171,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "7.0.*"
+        "php": "^7.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"

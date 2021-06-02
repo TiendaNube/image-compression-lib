@@ -1,0 +1,21 @@
+name: PHP suite
+
+on: [push]
+
+jobs:
+  code-syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check code style
+        run: docker-compose -f docker-compose.cli.yml run --rm php-cs-fixer fix --verbose --show-progress=estimating --dry-run
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build docker image
+        run: docker-compose build php-cli
+      - name: Install dependencies
+        run: docker-compose run --rm php-cli composer install
+      - name: Run test suite
+        run: docker-compose run --rm php-cli ./vendor/bin/phpunit
