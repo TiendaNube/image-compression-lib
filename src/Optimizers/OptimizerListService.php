@@ -5,25 +5,29 @@ declare(strict_types=1);
 namespace ImageCompression\Optimizers;
 
 use Spatie\ImageOptimizer\OptimizerChain;
+use Spatie\ImageOptimizer\Optimizers\BaseOptimizer;
 
 class OptimizerListService
 {
     /**
-     * @var OptimizerHandlerInterface[]
+     * @var BaseOptimizer[]
      */
-    private $optimizers = [
-        JpgOptimizer::class,
-        PngOptimizer::class,
-    ];
+    private $optimizers = [];
+
+    /**
+     * @param BaseOptimizer[] $optimizers
+     */
+    public function addOptimizers(array $optimizers)
+    {
+        array_push($this->optimizers, ...$optimizers);
+    }
 
     private function addOptimizersTo(OptimizerChain &$optimizerChain)
     {
-        foreach ($this->optimizers as $optimizer) {
-            $optimizer::addOptimizerTo($optimizerChain);
-        }
+        $optimizerChain->setOptimizers($this->optimizers);
     }
 
-    public function getOptimizerChain()
+    public function getOptimizerChain() : OptimizerChain
     {
         $optimizerChain = new OptimizerChain();
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ImageCompression;
 
+use ImageCompression\Optimizers\OptimizerListService;
 use Mockery;
 use phpmock\phpunit\PHPMock;
 use PHPUnit\Framework\TestCase;
@@ -26,6 +27,11 @@ class DefaultImageOptimizerTest extends TestCase
                 $expectedPathToOutput
             );
 
+        $optimizerListService = Mockery::mock(OptimizerListService::class);
+        $optimizerListService->shouldReceive('getOptimizerChain')
+            ->once()
+            ->andReturn($optimizerChainMock);
+
         $command = sprintf('convert %s -sampling-factor 4:2:0 -strip -quality 65 %s', $expectedPathToOutput, $expectedPathToOutput);
 
         $exec = $this->getFunctionMock(__NAMESPACE__, 'shell_exec');
@@ -33,7 +39,7 @@ class DefaultImageOptimizerTest extends TestCase
             ->with($command)
             ->willReturn('ok');
 
-        $defaultImageOptimizer = new DefaultImageOptimizer($optimizerChainMock);
+        $defaultImageOptimizer = new DefaultImageOptimizer($optimizerListService);
         $defaultImageOptimizer->optimizeImage($pathToImage, $pathToOutput);
         Mockery::close();
     }

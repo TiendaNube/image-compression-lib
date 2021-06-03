@@ -4,21 +4,33 @@ declare(strict_types=1);
 
 namespace ImageCompression;
 
+use ImageCompression\Optimizers\DefaultOptimizerList;
 use ImageCompression\Optimizers\OptimizerListService;
-use Spatie\ImageOptimizer\OptimizerChain;
 
 class DefaultImageOptimizer implements ImageOptimizerInterface
 {
-    private $optimizerChain;
+    /**
+     * @var OptimizerListService
+     */
+    private $optimizerListService;
 
-    public function __construct(OptimizerChain $optimizerChain = null)
+    public function __construct(OptimizerListService $optimizerListService = null)
     {
-        $this->optimizerChain = $optimizerChain;
-
-        if ($optimizerChain === null) {
-            $optimizerListService = new OptimizerListService();
-            $this->optimizerChain = $optimizerListService->getOptimizerChain();
+        if ($optimizerListService===null) {
+            $optimizerListService = DefaultOptimizerList::create();
         }
+
+        $this->setOptimizerList($optimizerListService);
+    }
+
+    private function setOptimizerList(OptimizerListService $optimizerListService)
+    {
+        $this->optimizerListService = $optimizerListService;
+    }
+
+    private function getOptimizerChain()
+    {
+        return $this->optimizerListService->getOptimizerChain();
     }
 
     public function optimizeImage(string $pathToImage, string $pathToOutput = null)
@@ -27,7 +39,7 @@ class DefaultImageOptimizer implements ImageOptimizerInterface
             $pathToOutput = $pathToImage;
         }
 
-        $this->optimizerChain->optimize($pathToImage, $pathToOutput);
+        $this->getOptimizerChain()->optimize($pathToImage, $pathToOutput);
 
         $this->convert($pathToOutput, $pathToOutput);
     }

@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace ImageCompression\Optimizers;
 
-use ImageCompression\Optimizers\Factories\Optipng;
-use ImageCompression\Optimizers\Factories\Pngquant;
-use Spatie\ImageOptimizer\OptimizerChain;
+use Spatie\ImageOptimizer\Optimizers\Optipng;
+use Spatie\ImageOptimizer\Optimizers\Pngquant;
 
 class PngOptimizer implements OptimizerHandlerInterface
 {
-    public static function addOptimizerTo(OptimizerChain &$optimizerChain)
+    public static function create() : array
     {
-        $optimizerChain->addOptimizer(Optipng::create());
-
-        $optimizerChain->addOptimizer(Pngquant::create());
+        return [
+            new Optipng(),
+            new Pngquant(),
+        ];
     }
 }
