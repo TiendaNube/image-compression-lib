@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ImageCompression\Optimizers;
 
 use Exception;
@@ -40,6 +42,6 @@ class WebpOptimizer implements ImageOptimizerInterface
     {
         $fileParts = pathinfo($file);
 
-        return $fileParts['dirname'] . '/' . $fileParts['filename'] . '.' . self::WEBP_EXT;
+        return $fileParts['dirname'].'/'.$fileParts['filename'].'.'.self::WEBP_EXT;
     }
 }
