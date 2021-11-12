@@ -35,12 +35,11 @@ class WebpOptimizer implements ImageOptimizerInterface
             ];
 
             WebPConvert::convert($pathToImage, $pathToOutput, $options);
-
-            return true;
         } catch (Exception $e) {
+            return false;
         }
 
-        return false;
+        return true;
     }
 
     private function getWebpPath(string $file) : string
