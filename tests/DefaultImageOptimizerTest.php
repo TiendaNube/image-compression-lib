@@ -41,7 +41,9 @@ class DefaultImageOptimizerTest extends TestCase
             ->willReturn('ok');
 
         $defaultImageOptimizer = new DefaultImageOptimizer();
-        $defaultImageOptimizer->optimizeImage($pathToImage, $pathToOutput);
+        $result = $defaultImageOptimizer->optimizeImage($pathToImage, $pathToOutput);
+
+        $this->assertTrue($result);
         Mockery::close();
     }
 

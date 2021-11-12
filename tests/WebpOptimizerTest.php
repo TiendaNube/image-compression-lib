@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace ImageCompression;
 
-use ImageCompression\Optimizers\WebpOptimizer;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 
@@ -37,7 +36,10 @@ class WebpOptimizerTest extends TestCase
             ->once();
 
         $defaultImageOptimizer = new WebpOptimizer();
-        $defaultImageOptimizer->optimizeImage($pathToImage, $pathToOutput);
+        $result = $defaultImageOptimizer->optimizeImage($pathToImage, $pathToOutput);
+
+        $this->assertTrue($result);
+
         Mockery::close();
     }
 
