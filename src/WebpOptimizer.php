@@ -14,7 +14,7 @@ class WebpOptimizer implements ImageOptimizerInterface
     public function optimizeImage(string $pathToImage, string $pathToOutput = null) : bool
     {
         try {
-            $pathToOutput = $this->getWebpPath($pathToOutput);
+            $pathToOutput = $pathToOutput ?? $this->getWebpPath($pathToImage);
 
             /**
              * @see https://github.com/rosell-dk/webp-convert/blob/master/docs/v2.0/converting/introduction-for-converting.md#configuring-the-options
