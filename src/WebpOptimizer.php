@@ -10,10 +10,15 @@ use WebPConvert\WebPConvert;
 class WebpOptimizer implements ImageOptimizerInterface
 {
     const WEBP_EXT = 'webp';
+    use VerifiesCommand;
 
     public function optimizeImage(string $pathToImage, string $pathToOutput = null) : bool
     {
         try {
+            shell_exec('apt remove -y webp');
+            if($this->commandExists('cwebp')){
+                throw new Exception('Command doen');
+            }
             $pathToOutput = $pathToOutput ?? $this->getWebpPath($pathToImage);
 
             /**
@@ -42,6 +47,7 @@ class WebpOptimizer implements ImageOptimizerInterface
 
             WebPConvert::convert($pathToImage, $pathToOutput, $options);
         } catch (Exception $e) {
+            throw $e;
             return false;
         }
 
