@@ -15,7 +15,6 @@ class WebpOptimizer implements ImageOptimizerInterface
     public function optimizeImage(string $pathToImage, string $pathToOutput = null) : bool
     {
         try {
-            shell_exec('apt remove -y webp');
             if($this->commandExists('cwebp')){
                 throw new Exception('Command doen');
             }
@@ -47,7 +46,6 @@ class WebpOptimizer implements ImageOptimizerInterface
 
             WebPConvert::convert($pathToImage, $pathToOutput, $options);
         } catch (Exception $e) {
-            throw $e;
             return false;
         }
 
