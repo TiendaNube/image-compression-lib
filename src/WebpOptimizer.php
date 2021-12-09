@@ -10,14 +10,15 @@ use WebPConvert\WebPConvert;
 class WebpOptimizer implements ImageOptimizerInterface
 {
     const WEBP_EXT = 'webp';
+    const CONVERTER_CMD = 'cwebp';
+
     use VerifiesCommand;
 
     public function optimizeImage(string $pathToImage, string $pathToOutput = null) : bool
     {
         try {
-            if($this->commandExists('cwebp')){
-                throw new Exception('Command doen');
-            }
+            $this->ensureInstalledCommand();
+
             $pathToOutput = $pathToOutput ?? $this->getWebpPath($pathToImage);
 
             /**
@@ -30,7 +31,7 @@ class WebpOptimizer implements ImageOptimizerInterface
                     'quality' => 95,
                     'sharp-yuv' => true,
                     'converters' => [
-                        'cwebp',
+                        self::CONVERTER_CMD,
                     ],
                 ],
                 'jpeg' => [
@@ -39,7 +40,7 @@ class WebpOptimizer implements ImageOptimizerInterface
                     'auto-limit' => true,
                     'sharp-yuv' => true,
                     'converters' => [
-                        'cwebp',
+                        self::CONVERTER_CMD,
                     ],
                 ],
             ];
@@ -57,5 +58,11 @@ class WebpOptimizer implements ImageOptimizerInterface
         $fileParts = pathinfo($file);
 
         return $fileParts['dirname'].'/'.$fileParts['filename'].'.'.self::WEBP_EXT;
+    }
+
+    private function ensureInstalledCommand(){
+        if(!$this->commandExists(self::CONVERTER_CMD)){
+            throw new Exception(sprintf('Command %s is not installed', self::CONVERTER_CMD));
+        }
     }
 }
