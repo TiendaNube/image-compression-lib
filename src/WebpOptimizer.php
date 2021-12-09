@@ -25,12 +25,18 @@ class WebpOptimizer implements ImageOptimizerInterface
                     'near-lossless' => 100,
                     'quality' => 95,
                     'sharp-yuv' => true,
+                    'converters' => [
+                        'cwebp',
+                    ],
                 ],
                 'jpeg' => [
                     'encoding' => 'lossy',
                     'quality' => 95,
                     'auto-limit' => true,
                     'sharp-yuv' => true,
+                    'converters' => [
+                        'cwebp',
+                    ],
                 ],
             ];
 

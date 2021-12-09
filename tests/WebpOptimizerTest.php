@@ -20,12 +20,18 @@ class WebpOptimizerTest extends TestCase
                 'near-lossless' => 100,
                 'quality' => 95,
                 'sharp-yuv' => true,
+                'converters' => [
+                    'cwebp',
+                ],
             ],
             'jpeg' => [
                 'encoding' => 'lossy',
                 'quality' => 95,
                 'auto-limit' => true,
                 'sharp-yuv' => true,
+                'converters' => [
+                    'cwebp',
+                ],
             ],
         ];
 
@@ -47,7 +53,7 @@ class WebpOptimizerTest extends TestCase
     {
         return [
             ['/tmp/my-directory/image.png', '/tmp/my-directory/image.webp', '/tmp/my-directory/image.webp'],
-            ['/tmp/my-directory/image.png', '/tmp/my-directory/image.png', '/tmp/my-directory/image.webp'],
+            ['/tmp/my-directory/image.png', null, '/tmp/my-directory/image.webp'],
         ];
     }
 }
