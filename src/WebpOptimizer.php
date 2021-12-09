@@ -59,10 +59,4 @@ class WebpOptimizer implements ImageOptimizerInterface
 
         return $fileParts['dirname'].'/'.$fileParts['filename'].'.'.self::WEBP_EXT;
     }
-
-    private function ensureInstalledCommand(){
-        if(!$this->commandExists(self::CONVERTER_CMD)){
-            throw new Exception(sprintf('Command %s is not installed', self::CONVERTER_CMD));
-        }
-    }
 }

@@ -22,5 +22,10 @@
         "psr-4": {
             "ImageCompression\\": "tests/"
         }
+    },
+    "scripts": {
+        "style:check": "docker-compose -f docker-compose.cli.yml run --rm php-cs-fixer fix --verbose --show-progress=estimating --dry-run",
+        "style:fix": "docker-compose -f docker-compose.cli.yml run --rm php-cs-fixer fix --verbose --show-progress=estimating",
+        "test": "docker-compose -f docker-compose.yml run --rm php-cli vendor/bin/phpunit"
     }
 }
