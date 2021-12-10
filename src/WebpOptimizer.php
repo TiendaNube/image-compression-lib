@@ -14,34 +14,36 @@ class WebpOptimizer implements ImageOptimizerInterface
 
     use VerifiesCommand;
 
+    public function __construct()
+    {
+        if (!$this->commandExists(self::CONVERTER_CMD)) {
+            throw new MissingLibraryException(self::CONVERTER_CMD);
+        }
+    }
+
     public function optimizeImage(string $pathToImage, string $pathToOutput = null) : bool
     {
         try {
-            $this->ensureInstalledCommand();
-
             $pathToOutput = $pathToOutput ?? $this->getWebpPath($pathToImage);
 
             /**
              * @see https://github.com/rosell-dk/webp-convert/blob/master/docs/v2.0/converting/introduction-for-converting.md#configuring-the-options
              */
             $options = [
+                'converters' => [
+                    self::CONVERTER_CMD,
+                ],
                 'png' => [
                     'encoding' => 'lossy',
                     'near-lossless' => 100,
                     'quality' => 95,
                     'sharp-yuv' => true,
-                    'converters' => [
-                        self::CONVERTER_CMD,
-                    ],
                 ],
                 'jpeg' => [
                     'encoding' => 'lossy',
                     'quality' => 95,
                     'auto-limit' => true,
                     'sharp-yuv' => true,
-                    'converters' => [
-                        self::CONVERTER_CMD,
-                    ],
                 ],
             ];
 
