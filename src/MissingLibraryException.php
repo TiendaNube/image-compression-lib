@@ -8,10 +8,10 @@ use Exception;
 
 class MissingLibraryException extends Exception
 {
-    public function __construct($library = null, $code = 0, Exception $previous = null)
+    public function __construct($library = null)
     {
         $message = sprintf('Library %s is not available', $library);
 
-        parent::__construct($message, $code, $previous);
+        parent::__construct($message);
     }
 }
