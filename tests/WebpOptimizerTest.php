@@ -5,16 +5,22 @@ declare(strict_types=1);
 namespace ImageCompression;
 
 use Mockery;
+use phpmock\phpunit\PHPMock;
 use PHPUnit\Framework\TestCase;
 
 class WebpOptimizerTest extends TestCase
 {
+    use PHPMock;
+
     /**
      * @dataProvider inputAndOutputImageProvider
      */
     public function testOptimizeImageWithValidData($pathToImage, $pathToOutput, $expectedPathToOutput)
     {
         $options = [
+            'converters' => [
+                'cwebp',
+            ],
             'png' => [
                 'encoding' => 'lossy',
                 'near-lossless' => 100,
@@ -47,7 +53,21 @@ class WebpOptimizerTest extends TestCase
     {
         return [
             ['/tmp/my-directory/image.png', '/tmp/my-directory/image.webp', '/tmp/my-directory/image.webp'],
-            ['/tmp/my-directory/image.png', '/tmp/my-directory/image.png', '/tmp/my-directory/image.webp'],
+            ['/tmp/my-directory/image.png', null, '/tmp/my-directory/image.webp'],
         ];
+    }
+
+    public function testVerifiesLibraryInstallation()
+    {
+        $this->expectException(MissingLibraryException::class);
+
+        $exec = $this->getFunctionMock(__NAMESPACE__, 'shell_exec');
+        $exec->expects($this->once())
+            ->with('which \'cwebp\'')
+            ->willReturn('');
+
+        new WebpOptimizer();
+
+        Mockery::close();
     }
 }

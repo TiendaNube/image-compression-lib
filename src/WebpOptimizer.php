@@ -10,6 +10,16 @@ use WebPConvert\WebPConvert;
 class WebpOptimizer implements ImageOptimizerInterface
 {
     const WEBP_EXT = 'webp';
+    const CONVERTER_CMD = 'cwebp';
+
+    use VerifiesCommand;
+
+    public function __construct()
+    {
+        if (!$this->commandExists(self::CONVERTER_CMD)) {
+            throw new MissingLibraryException(self::CONVERTER_CMD);
+        }
+    }
 
     public function optimizeImage(string $pathToImage, string $pathToOutput = null) : bool
     {
@@ -20,6 +30,9 @@ class WebpOptimizer implements ImageOptimizerInterface
              * @see https://github.com/rosell-dk/webp-convert/blob/master/docs/v2.0/converting/introduction-for-converting.md#configuring-the-options
              */
             $options = [
+                'converters' => [
+                    self::CONVERTER_CMD,
+                ],
                 'png' => [
                     'encoding' => 'lossy',
                     'near-lossless' => 100,
