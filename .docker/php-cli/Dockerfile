@@ -1,13 +1,19 @@
-FROM phpdockerio/php7-cli:latest
+FROM phpdockerio/php74-cli:latest
 WORKDIR "/application"
 
 # Fix debconf warnings upon build
 ARG DEBIAN_FRONTEND=noninteractive
 
+RUN export LANG=C.UTF-8 \
+    && apt-get update \
+    && apt-get -y --no-install-recommends install software-properties-common \
+    && add-apt-repository ppa:ondrej/php \
+    && apt-get update
+
 # Install selected extensions and other stuff
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install git php7.0-mysql php7.0-sqlite php-geoip php-imagick \
-    php7.0-soap php-xdebug php7.0-phpdbg awscli jpegoptim optipng pngquant gifsicle webp dnsutils
+    && apt-get -y --no-install-recommends install git php7.4-mysql php7.4-sqlite php7.4-geoip php7.4-imagick \
+    php7.4-soap php7.4-xdebug php7.4-phpdbg awscli jpegoptim optipng pngquant gifsicle webp dnsutils
 
 RUN curl -sL https://deb.nodesource.com/setup_15.x | bash - \
     && apt-get install -y nodejs \
