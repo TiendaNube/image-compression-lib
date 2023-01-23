@@ -2,9 +2,6 @@ version: '3.2'
 
 services:
   php-cli:
-    build:
-      context: ./
-      dockerfile: .docker/php-cli/Dockerfile
+    image: tiendanube/php-cli:v1.1.0
     volumes:
       - .:/application
-    
