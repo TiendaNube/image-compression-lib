@@ -21,8 +21,9 @@ RUN export LANG=C.UTF-8 \
         pngquant \
         webp \
         php${PHP_VERSION} \
-        php${PHP_VERSION}-imagick \
         php${PHP_VERSION}-geoip \
+        php${PHP_VERSION}-imagick \
+        php${PHP_VERSION}-mbstring \
         php${PHP_VERSION}-mysql \
         php${PHP_VERSION}-phpdbg \
         php${PHP_VERSION}-sqlite \
