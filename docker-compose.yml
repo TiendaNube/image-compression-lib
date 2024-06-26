@@ -1,5 +1,3 @@
-version: '3.2'
-
 services:
   php-cli:
     build:
@@ -7,4 +5,10 @@ services:
       dockerfile: .docker/php-cli/Dockerfile
     volumes:
       - .:/application
-    
+
+  php-rector:
+    build:
+      context: ./
+      dockerfile: .docker/php-rector/Dockerfile
+    volumes:
+      - .:/application
