@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class MissingLibraryExceptionTest extends TestCase
 {
-    public function testGeneratesMessage()
+    public function testGeneratesMessage() : void
     {
         $library = 'cwebp';
 
