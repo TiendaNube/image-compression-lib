@@ -16,7 +16,7 @@ class DefaultImageOptimizerTest extends TestCase
     /**
      * @dataProvider inputAndOutputImageProvider
      */
-    public function testOptimizeImageWithValidData($pathToImage, $pathToOutput, $expectedPathToOutput) : void
+    public function testOptimizeImageWithValidData($pathToImage, $pathToOutput, $expectedPathToOutput): void
     {
         $optimizerChainMock = Mockery::mock(OptimizerChain::class);
         $optimizerChainMock->shouldReceive('optimize')
@@ -47,7 +47,7 @@ class DefaultImageOptimizerTest extends TestCase
         Mockery::close();
     }
 
-    public function inputAndOutputImageProvider() : array
+    public function inputAndOutputImageProvider(): array
     {
         return [
             ['original/img.jpg', null, 'original/img.jpg'],

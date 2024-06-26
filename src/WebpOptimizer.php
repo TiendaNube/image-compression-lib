@@ -9,10 +9,9 @@ use WebPConvert\WebPConvert;
 
 class WebpOptimizer implements ImageOptimizerInterface
 {
-    const WEBP_EXT = 'webp';
-    const CONVERTER_CMD = 'cwebp';
-
     use VerifiesCommand;
+    public const WEBP_EXT = 'webp';
+    public const CONVERTER_CMD = 'cwebp';
 
     public function __construct()
     {
@@ -21,7 +20,7 @@ class WebpOptimizer implements ImageOptimizerInterface
         }
     }
 
-    public function optimizeImage(string $pathToImage, string $pathToOutput = null) : bool
+    public function optimizeImage(string $pathToImage, string $pathToOutput = null): bool
     {
         try {
             $pathToOutput ??= $this->getWebpPath($pathToImage);
@@ -55,7 +54,7 @@ class WebpOptimizer implements ImageOptimizerInterface
         return true;
     }
 
-    private function getWebpPath(string $file) : string
+    private function getWebpPath(string $file): string
     {
         $fileParts = pathinfo($file);
 

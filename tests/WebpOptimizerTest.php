@@ -15,7 +15,7 @@ class WebpOptimizerTest extends TestCase
     /**
      * @dataProvider inputAndOutputImageProvider
      */
-    public function testOptimizeImageWithValidData($pathToImage, $pathToOutput, $expectedPathToOutput) : void
+    public function testOptimizeImageWithValidData($pathToImage, $pathToOutput, $expectedPathToOutput): void
     {
         $options = [
             'converters' => [
@@ -49,7 +49,7 @@ class WebpOptimizerTest extends TestCase
         Mockery::close();
     }
 
-    public function inputAndOutputImageProvider() : array
+    public function inputAndOutputImageProvider(): array
     {
         return [
             ['/tmp/my-directory/image.png', '/tmp/my-directory/image.webp', '/tmp/my-directory/image.webp'],
@@ -57,7 +57,7 @@ class WebpOptimizerTest extends TestCase
         ];
     }
 
-    public function testVerifiesLibraryInstallation() : void
+    public function testVerifiesLibraryInstallation(): void
     {
         $this->expectException(MissingLibraryException::class);
 
