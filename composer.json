@@ -4,7 +4,7 @@
     "type": "library",
     "minimum-stability": "dev",
     "require": {
-        "php": "7.0.*",
+        "php": "7.1.*",
         "spatie/image-optimizer": "^1.1",
         "rosell-dk/webp-convert": "^2.4"
     },
@@ -26,6 +26,6 @@
     "scripts": {
         "style:check": "docker-compose -f docker-compose.cli.yml run --rm php-cs-fixer fix --verbose --show-progress=estimating --dry-run",
         "style:fix": "docker-compose -f docker-compose.cli.yml run --rm php-cs-fixer fix --verbose --show-progress=estimating",
-        "test": "docker-compose -f docker-compose.yml run --rm php-cli vendor/bin/phpunit"
+        "test": "vendor/bin/phpunit"
     }
 }
