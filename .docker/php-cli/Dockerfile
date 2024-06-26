@@ -35,4 +35,3 @@ RUN export LANG=C.UTF-8 \
 
 # Override ini file
 COPY .docker/php-cli/php-ini-overrides.ini /etc/php/7.0/cli/conf.d/99-overrides.ini
-COPY .docker/php-cli/php-ini-overrides-phpdbg.ini /etc/php/7.0/phpdbg/conf.d/99-overrides.ini
