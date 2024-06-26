@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Check code style
-        run: docker compose -f docker-compose.cli.yml run --rm php-cs-fixer fix . --verbose --show-progress=estimating --dry-run
+        run: docker compose -f docker-compose.cli.yml run --rm php-cs-fixer fix . --verbose --dry-run
   run-tests:
     runs-on: ubuntu-latest
     steps:
