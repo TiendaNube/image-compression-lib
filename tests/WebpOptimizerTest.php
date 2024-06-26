@@ -15,7 +15,7 @@ class WebpOptimizerTest extends TestCase
     /**
      * @dataProvider inputAndOutputImageProvider
      */
-    public function testOptimizeImageWithValidData($pathToImage, $pathToOutput, $expectedPathToOutput)
+    public function testOptimizeImageWithValidData($pathToImage, $pathToOutput, $expectedPathToOutput): void
     {
         $options = [
             'converters' => [
@@ -57,7 +57,7 @@ class WebpOptimizerTest extends TestCase
         ];
     }
 
-    public function testVerifiesLibraryInstallation()
+    public function testVerifiesLibraryInstallation(): void
     {
         $this->expectException(MissingLibraryException::class);
 

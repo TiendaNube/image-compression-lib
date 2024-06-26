@@ -16,7 +16,7 @@ class DefaultImageOptimizerTest extends TestCase
     /**
      * @dataProvider inputAndOutputImageProvider
      */
-    public function testOptimizeImageWithValidData($pathToImage, $pathToOutput, $expectedPathToOutput)
+    public function testOptimizeImageWithValidData($pathToImage, $pathToOutput, $expectedPathToOutput): void
     {
         $optimizerChainMock = Mockery::mock(OptimizerChain::class);
         $optimizerChainMock->shouldReceive('optimize')
