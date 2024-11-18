@@ -4,12 +4,12 @@
     "type": "library",
     "minimum-stability": "dev",
     "require": {
-        "php": "7.1.*",
+        "php": "7.2.*",
         "spatie/image-optimizer": "^1.1",
         "rosell-dk/webp-convert": "^2.4"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.5",
+        "phpunit/phpunit": "^7.5",
         "mockery/mockery": "1.3.*",
         "php-mock/php-mock-phpunit": "2.6.*"
     },
