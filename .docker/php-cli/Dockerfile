@@ -5,7 +5,7 @@ WORKDIR "/application"
 
 # Fix debconf warnings upon build
 ARG DEBIAN_FRONTEND=noninteractive
-ARG PHP_VERSION=7.1
+ARG PHP_VERSION=7.2
 
 RUN export LANG=C.UTF-8 \
     && apt-get update \
@@ -34,4 +34,4 @@ RUN export LANG=C.UTF-8 \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Override ini file
-COPY .docker/php-cli/php-ini-overrides.ini /etc/php/7.0/cli/conf.d/99-overrides.ini
+COPY .docker/php-cli/php-ini-overrides.ini /etc/php/7.2/cli/conf.d/99-overrides.ini
