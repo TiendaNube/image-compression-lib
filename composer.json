@@ -4,7 +4,7 @@
     "type": "library",
     "minimum-stability": "dev",
     "require": {
-        "php": "7.0.*",
+        "php": "7.3.*",
         "spatie/image-optimizer": "^1.1",
         "rosell-dk/webp-convert": "^2.4"
     },
