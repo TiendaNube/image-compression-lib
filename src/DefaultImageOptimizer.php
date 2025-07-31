@@ -10,10 +10,6 @@ class DefaultImageOptimizer implements ImageOptimizerInterface
 {
     public function optimizeImage(string $pathToImage, string $pathToOutput = null) : bool
     {
-        if (empty($pathToOutput)) {
-            $pathToOutput = $pathToImage;
-        }
-
         $optimizerChain = OptimizerChainFactory::create();
         $optimizerChain->optimize($pathToImage, $pathToOutput);
 
