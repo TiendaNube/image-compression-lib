@@ -1,4 +1,6 @@
 FROM ubuntu:22.04
+COPY --from=composer:2.2 /usr/bin/composer /usr/bin/composer
+
 WORKDIR "/application"
 
 # Fix debconf warnings upon build
@@ -27,6 +29,7 @@ RUN apt-get update \
       php${PHP_VERSION}-gd \
       php${PHP_VERSION}-imagick \
       php${PHP_VERSION}-json \
+      php${PHP_VERSION}-mbstring \
       php${PHP_VERSION}-mysql \
       php${PHP_VERSION}-phpdbg \
       php${PHP_VERSION}-sqlite3 \
