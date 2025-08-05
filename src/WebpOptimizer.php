@@ -9,8 +9,8 @@ use WebPConvert\WebPConvert;
 
 class WebpOptimizer implements ImageOptimizerInterface
 {
-    const WEBP_EXT = 'webp';
-    const CONVERTER_CMD = 'cwebp';
+    public const WEBP_EXT = 'webp';
+    public const CONVERTER_CMD = 'cwebp';
 
     use VerifiesCommand;
 
