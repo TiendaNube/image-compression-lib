@@ -18,7 +18,7 @@ class DefaultImageOptimizerTest extends TestCase
     /**
      * @dataProvider inputAndOutputImageProvider
      */
-    public function testOptimizeImageWithValidData($pathToImage, $pathToOutput)
+    public function testOptimizeImageWithValidData($pathToImage, $pathToOutput, $convertInput, $convertOutput) : void
     {
         $optimizerChainMock = Mockery::mock(OptimizerChain::class);
         $optimizerChainMock->shouldReceive('optimize')
@@ -31,7 +31,7 @@ class DefaultImageOptimizerTest extends TestCase
             ->once()
             ->andReturn($optimizerChainMock);
 
-        $command = sprintf('convert %s -sampling-factor 4:2:0 -strip -quality 65 %s', $pathToImage, $pathToOutput);
+        $command = sprintf('convert %s -sampling-factor 4:2:0 -strip -quality 65 %s', $convertInput, $convertOutput);
 
         $exec = $this->getFunctionMock(__NAMESPACE__, 'shell_exec');
         $exec
@@ -48,8 +48,8 @@ class DefaultImageOptimizerTest extends TestCase
     public function inputAndOutputImageProvider() : array
     {
         return [
-            ['original/img.jpg', null],
-            ['original/img.jpg', 'optimized.jpg'],
+            ['original/img.jpg', null, 'original/img.jpg', 'original/img.jpg'],
+            ['original/img.jpg', 'optimized.jpg', 'original/img.jpg', 'optimized.jpg'],
         ];
     }
 }
