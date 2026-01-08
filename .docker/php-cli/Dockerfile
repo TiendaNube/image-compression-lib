@@ -43,7 +43,7 @@ RUN apt-get update \
 # Install mailhog client
 ENV PATH=/usr/local/go/bin:$PATH
 
-RUN curl -Lsf 'https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz' | tar -C '/usr/local' -xvzf - \
+RUN curl -Lsf 'https://go.dev/dl/go1.8.3.linux-amd64.tar.gz' | tar -C '/usr/local' -xvzf - \
     && go get github.com/mailhog/mhsendmail \
     && cp /root/go/bin/mhsendmail /usr/bin/mhsendmail
 
