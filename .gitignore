@@ -3,3 +3,6 @@
 .DS_Store
 /.php-cs-fixer.cache
 /.phpunit.result.cache
+
+# Snyk Security Extension - AI Rules (auto-generated)
+.cursor/rules/snyk_rules.mdc
