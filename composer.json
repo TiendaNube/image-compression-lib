@@ -3,7 +3,7 @@
     "description": "An abstraction layer for image compression libraries",
     "type": "library",
     "require": {
-        "php": "7.3.*",
+        "php": "7.4.*",
         "spatie/image-optimizer": "^1.1",
         "rosell-dk/webp-convert": "^2.4"
     },
