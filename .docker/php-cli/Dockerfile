@@ -6,7 +6,7 @@ WORKDIR "/application"
 # Fix debconf warnings upon build
 ARG DEBIAN_FRONTEND=noninteractive
 
-ARG PHP_VERSION=7.3
+ARG PHP_VERSION=7.4
 
 RUN apt-get update \
     && apt-get -y install  \
