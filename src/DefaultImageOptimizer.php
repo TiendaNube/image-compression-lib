@@ -8,7 +8,7 @@ use Spatie\ImageOptimizer\OptimizerChainFactory;
 
 class DefaultImageOptimizer implements ImageOptimizerInterface
 {
-    public function optimizeImage(string $pathToImage, string $pathToOutput = null) : bool
+    public function optimizeImage(string $pathToImage, ?string $pathToOutput = null): bool
     {
         $optimizerChain = OptimizerChainFactory::create();
         $optimizerChain->optimize($pathToImage, $pathToOutput);
@@ -16,7 +16,7 @@ class DefaultImageOptimizer implements ImageOptimizerInterface
         return $this->convert($pathToImage, $pathToOutput);
     }
 
-    private function convert(string $pathToImage, string $pathToOutput = null) : bool
+    private function convert(string $pathToImage, ?string $pathToOutput = null): bool
     {
         if ($pathToOutput === null) {
             $pathToOutput = $pathToImage;
