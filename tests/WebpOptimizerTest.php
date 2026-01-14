@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace ImageCompression;
 
 use Mockery;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use phpmock\phpunit\PHPMock;
 use PHPUnit\Framework\TestCase;
 
 class WebpOptimizerTest extends TestCase
 {
     use PHPMock;
+    use MockeryPHPUnitIntegration;
 
     /**
      * @dataProvider inputAndOutputImageProvider
@@ -45,8 +47,6 @@ class WebpOptimizerTest extends TestCase
         $result = $defaultImageOptimizer->optimizeImage($pathToImage, $pathToOutput);
 
         $this->assertTrue($result);
-
-        Mockery::close();
     }
 
     public function inputAndOutputImageProvider() : array
@@ -67,7 +67,5 @@ class WebpOptimizerTest extends TestCase
             ->willReturn('');
 
         new WebpOptimizer();
-
-        Mockery::close();
     }
 }

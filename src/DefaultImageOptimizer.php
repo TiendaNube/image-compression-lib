@@ -10,17 +10,13 @@ class DefaultImageOptimizer implements ImageOptimizerInterface
 {
     public function optimizeImage(string $pathToImage, string $pathToOutput = null) : bool
     {
-        if (empty($pathToOutput)) {
-            $pathToOutput = $pathToImage;
-        }
-
         $optimizerChain = OptimizerChainFactory::create();
         $optimizerChain->optimize($pathToImage, $pathToOutput);
 
-        return $this->convert($pathToOutput, $pathToOutput);
+        return $this->convert($pathToImage, $pathToOutput);
     }
 
-    private function convert(string $pathToImage, string $pathToOutput) : bool
+    private function convert(string $pathToImage, string $pathToOutput = null) : bool
     {
         $command = sprintf('convert %s -sampling-factor 4:2:0 -strip -quality 65 %s', $pathToImage, $pathToOutput);
 

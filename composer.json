@@ -4,14 +4,14 @@
     "type": "library",
     "minimum-stability": "dev",
     "require": {
-        "php": "7.0.*",
+        "php": "7.3.*",
         "spatie/image-optimizer": "^1.1",
         "rosell-dk/webp-convert": "^2.4"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.5",
-        "mockery/mockery": "1.3.*",
-        "php-mock/php-mock-phpunit": "2.6.*"
+        "phpunit/phpunit": "^8.5",
+        "mockery/mockery": "^1.3",
+        "php-mock/php-mock-phpunit": "^2.6"
     },
     "autoload": {
         "psr-4": {
@@ -24,8 +24,8 @@
         }
     },
     "scripts": {
-        "style:check": "docker-compose -f docker-compose.cli.yml run --rm php-cs-fixer fix --verbose --show-progress=estimating --dry-run",
-        "style:fix": "docker-compose -f docker-compose.cli.yml run --rm php-cs-fixer fix --verbose --show-progress=estimating",
-        "test": "docker-compose -f docker-compose.yml run --rm php-cli vendor/bin/phpunit"
+        "style:check": "docker compose -f docker-compose.cli.yml run --rm php-cs-fixer fix --verbose --show-progress=dots --dry-run",
+        "style:fix": "docker compose -f docker-compose.cli.yml run --rm php-cs-fixer fix --verbose --show-progress=dots",
+        "test": "docker compose -f docker-compose.yml run --rm php-cli vendor/bin/phpunit"
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace ImageCompression;
 
 use Mockery;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use phpmock\phpunit\PHPMock;
 use PHPUnit\Framework\TestCase;
 use Spatie\ImageOptimizer\OptimizerChain;
@@ -12,19 +13,17 @@ use Spatie\ImageOptimizer\OptimizerChain;
 class DefaultImageOptimizerTest extends TestCase
 {
     use PHPMock;
+    use MockeryPHPUnitIntegration;
 
     /**
      * @dataProvider inputAndOutputImageProvider
      */
-    public function testOptimizeImageWithValidData($pathToImage, $pathToOutput, $expectedPathToOutput)
+    public function testOptimizeImageWithValidData($pathToImage, $pathToOutput)
     {
         $optimizerChainMock = Mockery::mock(OptimizerChain::class);
         $optimizerChainMock->shouldReceive('optimize')
             ->once()
-            ->with(
-                $pathToImage,
-                $expectedPathToOutput
-            );
+            ->with($pathToImage, $pathToOutput);
 
         $optimizerChainFactoryMock = Mockery::mock('alias:Spatie\ImageOptimizer\OptimizerChainFactory');
         $optimizerChainFactoryMock
@@ -32,7 +31,7 @@ class DefaultImageOptimizerTest extends TestCase
             ->once()
             ->andReturn($optimizerChainMock);
 
-        $command = sprintf('convert %s -sampling-factor 4:2:0 -strip -quality 65 %s', $expectedPathToOutput, $expectedPathToOutput);
+        $command = sprintf('convert %s -sampling-factor 4:2:0 -strip -quality 65 %s', $pathToImage, $pathToOutput);
 
         $exec = $this->getFunctionMock(__NAMESPACE__, 'shell_exec');
         $exec
@@ -44,14 +43,13 @@ class DefaultImageOptimizerTest extends TestCase
         $result = $defaultImageOptimizer->optimizeImage($pathToImage, $pathToOutput);
 
         $this->assertTrue($result);
-        Mockery::close();
     }
 
     public function inputAndOutputImageProvider() : array
     {
         return [
-            ['original/img.jpg', null, 'original/img.jpg'],
-            ['original/img.jpg', 'optimized.jpg', 'optimized.jpg'],
+            ['original/img.jpg', null],
+            ['original/img.jpg', 'optimized.jpg'],
         ];
     }
 }

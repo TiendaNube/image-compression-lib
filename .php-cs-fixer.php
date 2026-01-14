@@ -1,10 +1,10 @@
 <?php
 
-$finder = PhpCsFixer\Finder::create()
+$finder = (new PhpCsFixer\Finder())
     ->in(__DIR__ .'/tests')
     ->in(__DIR__ .'/src');
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setRules([
         'align_multiline_comment' => true,
         'array_indentation' => true,
@@ -14,7 +14,14 @@ return PhpCsFixer\Config::create()
         'blank_line_before_statement' => [ 'statements' => [ 'return' ] ],
         'braces' => [ 'allow_single_line_closure' => true ],
         'cast_spaces' => true,
-        'class_attributes_separation' => [ 'elements' => [ 'method', 'property' ] ],
+        'class_attributes_separation' => [ 'elements' =>
+            [
+                'const' => 'none',
+                'method' => 'one',
+                'property' => 'none',
+                'trait_import' => 'none',
+            ]
+        ],
         'class_definition' => [ 'single_line' => true ],
         'concat_space' => ['spacing' => 'none'],
         'constant_case' => [ 'case' => 'lower' ],
@@ -33,7 +40,7 @@ return PhpCsFixer\Config::create()
         'lowercase_static_reference' => true,
         'magic_constant_casing' => true,
         'magic_method_casing' => true,
-        'method_argument_space' => ['ensure_fully_multiline' => true],
+        'method_argument_space' => [ 'on_multiline' => 'ensure_fully_multiline'],
         'method_chaining_indentation' => true,
         'native_function_casing' => true,
         'native_function_type_declaration_casing' => true,
@@ -48,12 +55,11 @@ return PhpCsFixer\Config::create()
         'no_leading_namespace_whitespace' => true,
         'no_mixed_echo_print' => [ 'use' => 'echo' ],
         'no_multiline_whitespace_around_double_arrow' => true,
-        'no_multiline_whitespace_before_semicolons' => true,
         'multiline_whitespace_before_semicolons' => [ 'strategy' => 'no_multi_line' ],
         'no_superfluous_elseif' => true,
         'no_singleline_whitespace_before_semicolons' => true,
         'no_short_bool_cast' => true,
-        'no_short_echo_tag' => true,
+        'echo_tag_syntax' => [ 'format' => 'long' ],
         'no_spaces_after_function_name' => true,
         'no_spaces_around_offset' => [ 'positions' => ['inside', 'outside'] ],
         'no_spaces_inside_parenthesis' => true,
@@ -81,7 +87,6 @@ return PhpCsFixer\Config::create()
         'single_import_per_statement' => true,
         'single_line_comment_style' => true,
         'single_line_after_imports' => true,
-        'single_line_comment_style' => true,
         'single_line_throw' => true,
         'single_quote' => [ 'strings_containing_single_quote_chars' => true ],
         'single_trait_insert_per_statement' => true,
@@ -90,8 +95,7 @@ return PhpCsFixer\Config::create()
         'switch_case_semicolon_to_colon' => true,
         'switch_case_space' => true,
         'ternary_operator_spaces' => true,
-        'ternary_to_null_coalescing' => true,
-        'trailing_comma_in_multiline_array' => true,
+        'trailing_comma_in_multiline' => [ 'elements' => ['arrays'] ],
         'trim_array_spaces' => true,
         'unary_operator_spaces' => true,
         'visibility_required' => true,
@@ -111,7 +115,9 @@ return PhpCsFixer\Config::create()
         'no_empty_phpdoc' => true,
         'no_superfluous_phpdoc_tags' => [ 'allow_mixed' => false, 'allow_unused_params' => false, 'remove_inheritdoc' => false],
         'phpdoc_align' => false,
-        'phpdoc_inline_tag' => true,
+        'general_phpdoc_tag_rename' => true,
+        'phpdoc_inline_tag_normalizer' => true,
+        'phpdoc_tag_type' => true,
         'phpdoc_no_access' => true,
         'phpdoc_no_alias_tag' => true,
         'phpdoc_no_package' => true,
@@ -127,7 +133,7 @@ return PhpCsFixer\Config::create()
         'php_unit_method_casing' => [ 'case' => 'camel_case' ],
 
         # Risky
-        'php_unit_test_annotation' => [ 'case' => 'camel', 'style' => 'prefix' ]
+        'php_unit_test_annotation' => true,
     ])
     ->setFinder($finder)
     ->setUsingCache(true)
