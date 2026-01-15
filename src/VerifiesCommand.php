@@ -6,7 +6,7 @@ namespace ImageCompression;
 
 trait VerifiesCommand
 {
-    private function commandExists($command) : bool
+    private function commandExists(string $command) : bool
     {
         $return = shell_exec(sprintf('which %s', escapeshellarg($command)));
 

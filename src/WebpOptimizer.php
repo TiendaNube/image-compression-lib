@@ -21,7 +21,7 @@ class WebpOptimizer implements ImageOptimizerInterface
         }
     }
 
-    public function optimizeImage(string $pathToImage, string $pathToOutput = null) : bool
+    public function optimizeImage(string $pathToImage, ?string $pathToOutput = null) : bool
     {
         try {
             $pathToOutput = $pathToOutput ?? $this->getWebpPath($pathToImage);

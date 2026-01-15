@@ -1,6 +1,6 @@
 services:
   php-cs-fixer:
-    image: cytopia/php-cs-fixer:3-php7.3
+    image: cytopia/php-cs-fixer:3-php7.4
     init: true
     volumes:
       - .:/data

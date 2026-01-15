@@ -6,7 +6,7 @@ WORKDIR "/application"
 # Fix debconf warnings upon build
 ARG DEBIAN_FRONTEND=noninteractive
 
-ARG PHP_VERSION=7.3
+ARG PHP_VERSION=7.4
 
 RUN apt-get update \
     && apt-get -y install  \
@@ -43,7 +43,7 @@ RUN apt-get update \
 # Install mailhog client
 ENV PATH=/usr/local/go/bin:$PATH
 
-RUN curl -Lsf 'https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz' | tar -C '/usr/local' -xvzf - \
+RUN curl -Lsf 'https://go.dev/dl/go1.8.3.linux-amd64.tar.gz' | tar -C '/usr/local' -xvzf - \
     && go get github.com/mailhog/mhsendmail \
     && cp /root/go/bin/mhsendmail /usr/bin/mhsendmail
 
@@ -52,4 +52,3 @@ RUN apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/
 
 # Override ini file
 COPY .docker/php-cli/php-ini-overrides.ini /etc/php/${PHP_VERSION}/cli/conf.d/99-overrides.ini
-COPY .docker/php-cli/php-ini-overrides-phpdbg.ini /etc/php/${PHP_VERSION}/cli/conf.d/99-overrides.ini
