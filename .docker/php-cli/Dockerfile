@@ -52,4 +52,3 @@ RUN apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/
 
 # Override ini file
 COPY .docker/php-cli/php-ini-overrides.ini /etc/php/${PHP_VERSION}/cli/conf.d/99-overrides.ini
-COPY .docker/php-cli/php-ini-overrides-phpdbg.ini /etc/php/${PHP_VERSION}/cli/conf.d/99-overrides.ini
