@@ -18,6 +18,9 @@ class DefaultImageOptimizer implements ImageOptimizerInterface
 
     private function convert(string $pathToImage, string $pathToOutput = null) : bool
     {
+        if ($pathToOutput === null) {
+            $pathToOutput = $pathToImage;
+        }
         $command = sprintf('convert %s -sampling-factor 4:2:0 -strip -quality 65 %s', $pathToImage, $pathToOutput);
 
         return shell_exec($command) !== null;
