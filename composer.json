@@ -2,14 +2,13 @@
     "name": "tiendanube/image-compression-lib",
     "description": "An abstraction layer for image compression libraries",
     "type": "library",
-    "minimum-stability": "dev",
     "require": {
         "php": "7.3.*",
-        "spatie/image-optimizer": "^1.1",
-        "rosell-dk/webp-convert": "^2.4"
+        "spatie/image-optimizer": "^1.8",
+        "rosell-dk/webp-convert": "^2.9"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5",
+        "phpunit/phpunit": "^9.6",
         "mockery/mockery": "^1.3",
         "php-mock/php-mock-phpunit": "^2.6"
     },
